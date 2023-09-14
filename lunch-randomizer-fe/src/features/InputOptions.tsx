@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { Box, Divider, Typography } from '@mui/material';
-import PastRecordTable from './PastRecordsTable';
+import React, { useState } from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { Box, Divider, Typography } from "@mui/material";
+import PastRecordTable from "./PastRecordsTable";
 import {
   getLunchPastRecords,
   randomizeLunchOptions,
-} from '../api/RandomizeLunchAPI';
+} from "../api/RandomizeLunchAPI";
 
 interface SubmittedOptions {
   options: string;
@@ -25,9 +25,9 @@ interface records {
 }
 
 const InputOptions: React.FC = () => {
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>("");
   const [values, setValues] = useState<SubmittedOptions[]>([]);
-  const [finalLocation, setFinalLocation] = useState<string>('');
+  const [finalLocation, setFinalLocation] = useState<string>("");
   const [records, setRecords] = useState<records[]>([]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,13 +35,13 @@ const InputOptions: React.FC = () => {
   };
 
   const handleAddValue = () => {
-    if (inputValue.trim() !== '') {
+    if (inputValue.trim() !== "") {
       const newValues: SubmittedOptions = {
         options: inputValue,
       };
 
       setValues([...values, newValues]);
-      setInputValue('');
+      setInputValue("");
     }
   };
 
@@ -52,7 +52,7 @@ const InputOptions: React.FC = () => {
   };
 
   const handleSubmittedRespose = (res: any) => {
-    console.log('Response gotten from BE ', res.data.list.finalLocation);
+    console.log("Response gotten from BE ", res.data.list.finalLocation);
 
     if (!res.data.error) {
       setFinalLocation(res.data.list.finalLocation);
@@ -66,13 +66,13 @@ const InputOptions: React.FC = () => {
         randomizeLunchOptions(handleSubmittedRespose, values);
         setValues([]);
       } catch (error) {
-        console.error('Error submitting data:', error);
-      } 
+        console.error("Error submitting data:", error);
+      }
     }
   };
 
   const handleGetResponse = (res: any) => {
-    console.log('get Response', res);
+    console.log("get Response", res);
 
     setRecords(res.data.list);
   };
@@ -83,33 +83,35 @@ const InputOptions: React.FC = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', flexDirection: 'column', py: 0.5 }}>
+      <Box sx={{ display: "flex", flexDirection: "column", py: 0.5 }}>
         {/* input options */}
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
           }}
         >
-          <Typography variant='h6' sx={{fontWeight: 'bold', mb:1}}>Enter Lunch Options</Typography>
+          <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+            Enter Lunch Options
+          </Typography>
           <Box
             sx={{
-              display: 'flex',
+              display: "flex",
             }}
           >
             <TextField
-              label='Lunch Options'
-              variant='outlined'
+              label="Lunch Options"
+              variant="outlined"
               value={inputValue}
               onChange={handleInputChange}
-              sx={{ width: '50%' }}
+              sx={{ width: "50%" }}
             />
             <Button
-              variant='contained'
-              color='primary'
+              variant="contained"
+              color="primary"
               onClick={handleAddValue}
-              size='medium'
-              sx={{ ml: 2, fontSize: '12px', alignSelf: 'center' }} // Adjust margin to create space between the text field and button
+              size="medium"
+              sx={{ ml: 2, fontSize: "12px", alignSelf: "center" }} // Adjust margin to create space between the text field and button
             >
               Add Options
             </Button>
@@ -121,35 +123,46 @@ const InputOptions: React.FC = () => {
         {/* Show options inputted */}
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
             my: 1,
           }}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Typography variant='h6' sx={{fontWeight: 'bold'}}> Options Entered: </Typography>
-            <Button variant='contained' color='success' size='small' onClick={handleSubmit} sx={{mx: 2}}>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+              {" "}
+              Options Entered:{" "}
+            </Typography>
+            <Button
+              variant="contained"
+              color="success"
+              size="small"
+              onClick={handleSubmit}
+              sx={{ mx: 2 }}
+            >
               Randomize
             </Button>
           </Box>
-          <Box component='ol' sx={{ my: 1 }}>
+          <Box component="ol" sx={{ my: 1 }}>
             {values.map((value, index) => (
-              <Box component='li' key={index}>
+              <Box component="li" key={index}>
                 <Box
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
                     py: 0.5,
                   }}
                 >
-                  <Typography variant='body1' sx={{fontSize : '24px'}}>{value.options}</Typography>
+                  <Typography variant="body1" sx={{ fontSize: "24px" }}>
+                    {value.options}
+                  </Typography>
                   <Box sx={{ mx: 2 }}>
                     <Button
-                      variant='outlined'
-                      color='secondary'
-                      size='medium'
+                      variant="outlined"
+                      color="secondary"
+                      size="medium"
                       onClick={() => handleRemoveValue(index)}
                     >
                       Clear
@@ -165,17 +178,15 @@ const InputOptions: React.FC = () => {
 
         {/* final Location */}
         <Box sx={{ mt: 1 }}>
-          <Typography
-            variant='h5'
-            sx={{fontWeight: 'Bold'}}
-          >
-            {`Final Location:  ${finalLocation}`}
+          <Typography variant="h5">
+            Final Location:{" "}
+            <span style={{ fontWeight: "bold" }}>{finalLocation}</span>
           </Typography>
         </Box>
 
         <Divider sx={{ py: 1 }} />
 
-        {records.length > 0 ? <PastRecordTable records={records} /> : ''}
+        {records.length > 0 ? <PastRecordTable records={records} /> : ""}
       </Box>
     </>
   );
