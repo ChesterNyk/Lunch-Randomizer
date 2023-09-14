@@ -129,7 +129,7 @@ const InputOptions: React.FC = () => {
         >
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Typography variant='h6' sx={{fontWeight: 'bold'}}> Options Entered: </Typography>
-            <Button variant='contained' color='secondary' size='small' onClick={handleSubmit} sx={{mx: 2}}>
+            <Button variant='contained' color='success' size='small' onClick={handleSubmit} sx={{mx: 2}}>
               Randomize
             </Button>
           </Box>
