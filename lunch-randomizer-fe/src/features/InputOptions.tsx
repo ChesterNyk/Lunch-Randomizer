@@ -18,10 +18,10 @@ interface options {
 }
 
 interface records {
-  lunchRecordsId: number;
-  optionList: options[];
+  lunchRecordId: number;
+  optionsList: options[];
   finalLocation: string;
-  createdDatetime: Date;
+  createdDateTime: string;
 }
 
 const InputOptions: React.FC = () => {
@@ -64,14 +64,15 @@ const InputOptions: React.FC = () => {
     if (values.length > 0) {
       try {
         randomizeLunchOptions(handleSubmittedRespose, values);
+        setValues([]);
       } catch (error) {
         console.error('Error submitting data:', error);
-      }
+      } 
     }
   };
 
   const handleGetResponse = (res: any) => {
-    console.log('response', res);
+    console.log('get Response', res);
 
     setRecords(res.data.list);
   };
@@ -126,8 +127,8 @@ const InputOptions: React.FC = () => {
             my: 1,
           }}
         >
-          <Box sx={{ display: 'flex' }}>
-            <Typography variant='h6' sx={{fontWeight: 'bold'}}> Options Entered </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Typography variant='h6' sx={{fontWeight: 'bold'}}> Options Entered: </Typography>
             <Button variant='contained' color='secondary' size='small' onClick={handleSubmit} sx={{mx: 2}}>
               Randomize
             </Button>
@@ -174,7 +175,7 @@ const InputOptions: React.FC = () => {
 
         <Divider sx={{ py: 1 }} />
 
-        {/* <PastRecordTable records={records} />  */}
+        {records.length > 0 ? <PastRecordTable records={records} /> : ''}
       </Box>
     </>
   );
