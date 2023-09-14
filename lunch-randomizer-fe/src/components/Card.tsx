@@ -11,7 +11,7 @@ const Card: React.FC<CardProps> = (props) => {
   return (
     <MuiCard
       variant={props.noOutline ? "outlined" : "elevation"}
-      sx={{ mt: 2, mb: 2 }}
+      sx={{ mt: 2, mb: 2, width: '100%' }}
     >
       <MuiCardContent>{props.children}</MuiCardContent>
     </MuiCard>
