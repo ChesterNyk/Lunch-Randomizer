@@ -1,9 +1,13 @@
 # Lunch Location Randomizer - FE
 ## Problem Statement
 Team members often face the challenge of collectively deciding on a lunch location. This process can be time-consuming and may lead to disagreements, especially when there are varying preferences within the team. To streamline this decision-making process, we have developed a Lunch Location Randomizer application.
-
+## Technologies Used
+- ⚛️ React
+- 🧰 TypeScript
+- 📡 Axios
+- 📦 MUI
 ## Description / Features
-The Lunch Location Randomizer FE is a web application that allows a team to quickly and fairly select a lunch location. Here's how it works:
+The Lunch Location Randomizer FE is a web application that allows a team to quickly and fairly select a lunch location. This application works together with a Spring-boot application that serves as the BE. Here's how it works:
 
 - <b>Input Lunch Options:</b> One team member will input all the options each team member has. These options could be different restaurants or food places they'd like to consider for lunch.
     - <b>Displaying options input: </b> The application will also display options inputted by the team members.
@@ -13,12 +17,6 @@ The Lunch Location Randomizer FE is a web application that allows a team to quic
 
 - <b>Past Records</b>: The application keeps a record of past lunch choices, making it easy to track where the team has previously gone for lunch.
     - <b> Clearing all Past Record </b> : The application also allows clearing of all the past records.
-
-## Technologies Used
-- ⚛️ React
-- 🧰 TypeScript
-- 📡 Axios
-- 📦 MUI
 
 ## Usage
 To Run the application in you local machine, follow these steps
@@ -33,7 +31,7 @@ Make sure you have the following installed:
 1. Open Command Prompt:
     - Press the Windows symbol key, type `cmd` and hit Enter to open Command Prompt.
 2. Clone the Repository
-    - Use teh `git clone` command to clone the Lunch Location Randomizer repository to your local machine:
+    - Use teh `git clone` command to clone the Lunch Location Randomizer FE repository to your local machine:
     ```sh
     git clone <respository URl>
     ```
@@ -42,7 +40,7 @@ Make sure you have the following installed:
     ```sh
     cd <project folder>
     ```
-3. Install Dependencies:
+4. Install Dependencies:
     - Use `npm` to install the project's dependencies:
     ```sh
     npm install
